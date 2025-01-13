@@ -61,11 +61,11 @@ func (h *ReceiptHandler) GetPoints(c *gin.Context) {
 		// handles the case where the receipt is not found
 		if errors.Is(err, models.ErrNotFound) {
 			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
-			return
+		} else {
+			// handles other errors
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		}
-
-		// handles other errors
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
 	// calculates points based on the retailer name
