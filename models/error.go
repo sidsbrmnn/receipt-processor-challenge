@@ -3,7 +3,7 @@ package models
 import "errors"
 
 var (
-	ErrNotFound      = errors.New("no receipt found for that ID, please verify input")
-	ErrInvalid       = errors.New("the receipt is invalid, please verify input")
-	ErrAlreadyExists = errors.New("a receipt with that ID already exists")
+	ErrNotFound      = errors.New("No receipt found for that ID. Please verify input.")
+	ErrInvalid       = errors.New("The receipt is invalid. Please verify input.")
+	ErrAlreadyExists = errors.New("A receipt with that ID already exists. Please verify input.")
 )
