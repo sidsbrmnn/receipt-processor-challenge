@@ -40,11 +40,11 @@ func (h *ReceiptHandler) ProcessReceipt(c *gin.Context) {
 		// handles the case where the receipt already exists
 		if errors.Is(err, models.ErrAlreadyExists) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
+		} else {
+			// handles other errors
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		}
-
-		// handles other errors
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
 	// returns the id of the created receipt
