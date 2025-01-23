@@ -35,7 +35,7 @@ func (h *ReceiptHandler) ProcessReceipt(c *gin.Context) {
 	}
 
 	// creates a new receipt in the repository
-	id, err := h.Repository.Create(r)
+	id, err := h.Repository.Create(&r)
 	if err != nil {
 		// handles the case where the receipt already exists
 		if errors.Is(err, models.ErrAlreadyExists) {

@@ -18,6 +18,6 @@ type Receipt struct {
 
 // interface for interacting with the receipt repository
 type ReceiptRepository interface {
-	Create(Receipt) (string, error)
-	GetByID(string) (Receipt, error)
+	Create(*Receipt) (string, error)
+	GetByID(string) (*Receipt, error)
 }
